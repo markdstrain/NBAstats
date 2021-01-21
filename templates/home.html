@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        height: 30px
+    }
+</style>
+ <body>
+        <h1>
+            Player Stats 
+        </h1>
+        <div>
+        <table>
+            <thead>
+
+                <tr>
+                    <th class="rk">rk</th>
+                    <th>photo</th>
+                    {%for t in th%}
+                    <th class="{{t}}"><a href="">{{t}}</a></th>
+                    {%endfor%}  
+                    <th><a href="">FLP</a> </th>
+                    <th><a href="">Sal</a> </th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                {%for player in all_players%}
+                {% set playerloop = loop%}
+                <tr class="{{plid[playerloop.index0]}}">
+                 
+                    <td>{{loop.index}}</td>
+                    <div>
+                        <td><img src="https://www.basketball-reference.com/req/202101181/images/players/{{plid[playerloop.index0]}}.jpg"  alt=""></td>
+                        {%for stat in player%}
+                        {% if stat == player[0]%}
+                  
+                        <td class="{{plid[playerloop.index0]}}"><a href="/{{plid[playerloop.index0]}}/stat/page">{{stat}}</a></td>
+                    
+                        {%else%}
+                        <td>{{stat}}</td>
+                
+                        {%endif%}
+                
+
+                        {%endfor%}
+                        <td>{{FLP[loop.index0]}}</td>
+                        <td>salary</td>
+                    </div>
+                </tr>
+                {%endfor%}
+            
+            </tbody>
+        </table>
+    
+        </div>   
+    
+</html>

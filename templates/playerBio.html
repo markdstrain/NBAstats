@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Game Stats </h1>
+    <img src="https://www.basketball-reference.com/req/202101181/images/players/{{player_bio}}.jpg" alt="">
+        
+    <table>
+        <thead>
+            <tr>
+                <th>Rk</th>
+                {%for t in th[1:30]%}
+                <th class="{{t}}"><a href="">{{t}}</a></th>
+                {%endfor%}  
+                <th><a href="">FLP</a> </th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for td in logs%}
+            <tr> 
+                <td>{{loop.index}}</td>
+                <div>               
+                    {%for stat in td[1:]%}
+                    <td class="{{stat}}">{{stat}}</td>
+                    {%endfor%}
+                    
+                    <td>{{FLP[loop.index0]}}</td>
+                    
+                </div>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    
+</body>
+</html>

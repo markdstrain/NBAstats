@@ -269,7 +269,7 @@ def remove_player_from_team(team_id, stats_id):
     return redirect(f"/{g.user.username}/{team_id}")
 
 
-@app.route('/testing')
+@app.route('/nba_players_not_acquired')
 def this_my_area_to_see_what_output_looks_like():
     """This will go away I'm just using it to see what my data looks like"""
     

@@ -1,0 +1,58 @@
+{%extends 'home.html' %}
+{%block link%}
+    <link rel="stylesheet" href="/static/about.css">
+{%endblock%}
+{%block title%} 
+   <title>About</title>
+{%endblock%}
+
+{%block content%}
+
+<h1 class="text-center display-2"><u>About</u></h1>
+<p class="ml-5 mr-5">This app is intended to keep track of NBA players.  I have scraped data from <a href="https://www.basketball-reference.com">www.basketball-reference.com</a> so that 
+people can keep look up individual players stats, salaries, and fantasy league points. It also allows users to add players to a fantasy league type team. It only allows users to track their 
+favorite players as of right now. </p>
+
+<h2 class="text-center display-4"><u>Glossary</u></h2>
+<div class="ml-5 mr-5">
+    <ul>
+        <li><b>2P:</b>  Two point field goals made</li>
+        <li><b>2PA:</b>  Two point field goals attempted</li>
+        <li><b>2P%:</b>  Two point field goal percentage</li>
+        <li><b>3P:</b>  Three point field goals made</li>
+        <li><b>3PA:</b>  Three point field goals attempted</li>
+        <li><b>3P%</b>  Three point field goal percentage</li>
+        <li><b>+/-:</b>  The point differential while the player is in the game</li>
+        <li><b>Age:</b>  The age of the player</li>
+        <li><b>AST:</b>  Assists made</li>
+        <li><b>BLK:</b>  Blocks made</li>
+        <li><b>Date:</b>  The date on which the game occured</li>
+        <li><b>DRB:</b>  Defensive rebounds made</li>
+        <li><b>eFG:</b>  Effective Field Goal Percentage; the formula is (FG + 0.5*3P). This statistic adjusts for the fact that a 3-point field goal is worth one more point than a 2-point field goal.</li>
+        <li><b>FG:</b> Field Goals made</li>
+        <li><b>FGA:</b>  Field Goals Attempted</li>
+        <li><b>FG%:</b>  Field Goal Percentage</li>
+        <li><b>FLP:</b>  Fantasy League Points;  the formula is (PTS + 3P + (-1)*FGA + (2)*FG + (-1)FTA + FT + TRB + (2)*AST + (4)*AST + (4)*BLK + (-2)TOV). <small>This is a popular formula for <br> &emsp; &emsp;calculating fantasy league points</small> </li>
+        <li><b>FT:</b>  Free Throws made</li>
+        <li><b>FTA:</b>  Free Throws Attempted</li>
+        <li><b>FT%:</b>  Free Throw Percentage</li>
+        <li><b>G:</b>  Games played by a player</li>
+        <li><b>GmSC:</b>  Game Score; the formula is (PTS + 0.4*FG - 0.7*FGA - 0.4*(FTA-FT) + 0.7*ORB + 0.3*DRB + STL + 0.7*AST + 0.7*BLK - 0.4*PF - TOV) Game Score was created by John <br>&emsp; &emsp; &emsp; Hollinger to give a rough measure of a player's productivity for a single game.</li>
+        <li><b>GS:</b>  Games Started</li>
+        <li><b>MP:</b>  Minutes Played</li>
+        <li><b>OPP:</b>  The opposing Team</li>
+        <li><b>ORB:</b>  Offensive Rebounds made</li>
+        <li><b>PF:</b>  Personal Fouls</li>
+        <li><b>Player:</b>  The player's name</li>
+        <li><b>POS:</b>  Position</li>
+        <li><b>PTS:</b>  Points Scored</li>
+        <li><b>rk:</b>  Rank</li>
+        <li><b>S/FL:</b>  How much each FLP is worth; the formula is (Player's Salary / Player's FLP) </li>
+        <li><b>STL:</b>  Steals</li>
+        <li><b>Team:</b>  The team the player is currently on</li>
+        <li><b>TOV:</b>  Turnovers</li>
+        <li><b>W/L</b>  Win or Loss</li>
+    </ul>
+</div>
+
+{% endblock %}

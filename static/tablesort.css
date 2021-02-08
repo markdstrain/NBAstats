@@ -1,0 +1,53 @@
+div.pstatsContainer{
+    display: flex;
+    margin-top: 60px;
+}
+thead th {
+    position: sticky;
+    top: 73px;
+    background-color: rgb(12, 190, 202);
+}
+img.stat-img{
+    height: 30px;
+}
+.h-container{
+    display: flex;
+    text-align: center;
+    margin-top: 80px;
+}
+h1.statsH{
+    position: sticky;
+    left: 40%;
+    top: 85px
+}
+tbody{
+    background-color: white;
+}
+.bsktbll{
+    color: rgba(253, 167, 7, 0.801);
+}
+button{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: arial, sans-serif;
+    color: rgb(5, 126, 187);
+    text-decoration: underline;
+    cursor: pointer;
+}
+body{
+    background:#f0e8d5;
+}
+.table-sortable th{
+    cursor: pointer;
+}
+.table-sortable .th-sort-asc::after{
+    content: "\25b4";
+}
+.table-sortable .th-sort-desc::after{
+    content: "\25be";
+}
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after{
+    margin-left: 5px;
+}

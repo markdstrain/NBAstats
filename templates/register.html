@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% block title%}RegisterDat{%endblock%}
+{% block content%}
+<link rel="stylesheet" href="/static/register.css">
+<div>
+    <h1 class="text-center font-weight-bold text-light register-label">Sign up if you want to keep track of players</h1>
+    <p class="text-center font-weight-bold text-light">(Already registered? Login from the link in the top)</p>
+</div>
+<form method="POST">
+    {{form.hidden_tag()}}
+
+    {% for field in form.errors %}
+        <div class="alert alert-danger">{{field}}:
+            <ul>
+                {% for error in form.errors[field] %}
+                <li>
+                    {{error}}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        {%for error in field.errors %}
+            <span class="text-danger">{{error}}</span>
+        {% endfor %}
+    <div class="register-label">
+        {{field.label(class_='col-sm-2-form-label text-light')}}
+        <div>
+            {{field(class_="form-control")}}
+        </div>
+    </div>
+    {% endfor %}
+
+    <button class="btn btn-primary">Register</button>
+</form>
+{%endblock%}

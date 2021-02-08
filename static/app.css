@@ -1,0 +1,64 @@
+.bsktbll{
+    color: rgba(253, 167, 7, 0.801);
+}
+.navbar{
+    height: 75px;
+}
+body{
+    margin-top: 80px;
+    margin-left: 0px;
+    background:#f0e8d5;
+}
+tbody{
+    background-color: white;
+}
+thead th{
+    background-color: rgb(12, 190, 202) ;
+    position: sticky;
+    top: 343px;
+}
+.table-sortable th{
+    cursor: pointer;
+}
+.table-sortable .th-sort-asc::after{
+    content: "\25b4";
+}
+.table-sortable .th-sort-desc::after{
+    content: "\25be";
+}
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after{
+    margin-left: 5px;
+}
+
+.card-container{
+    background-color: #f0e8d5;
+    position: fixed;
+    top: 75px;
+    height: 270px; 
+    width: 100vw;  
+    z-index: 5; 
+}
+.card{
+    position: fixed;
+    right: 50%;
+    margin-right: -88px;
+    
+}
+.table-container{
+    position: relative;;
+    top: 263px;
+}
+.name{
+    position: relative;
+    text-align: center;
+    z-index: 10;
+    top: 210px;
+    color: white;
+    -webkit-text-stroke: 2px #000000;
+}
+.sal{
+    position: relative;
+    margin-left: 57%;
+    margin-top: -40px;
+}

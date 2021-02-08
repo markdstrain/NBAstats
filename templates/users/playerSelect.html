@@ -1,0 +1,93 @@
+{%extends 'base.html'%}
+{% block title%}Player Select{%endblock%}
+{%block link%}
+    <link rel="stylesheet" href="/static/tablesort.css">
+{%endblock%}
+{% block content%}
+<div class="h-container">
+    {% if po == 'PG' %}
+    <h1 class="statsH">Point Guards </h1>
+    {% elif po == 'SG'%}
+    <h1 class="statsH"> Shooting Guards</h1>
+    {% elif po == 'SF'%}
+    <h1 class="statsH"> Small Forwards</h1>
+    {% elif po == 'PF'%}
+    <h1 class="statsH"> Power Forwards</h1>
+    {% elif po == 'C'%}
+    <h1 class="statsH"> Centers</h1>
+    {% elif po == 'G'%}
+    <h1 class="statsH"> Guards</h1>
+    {% elif po == 'F'%}
+    <h1 class="statsH"> Forwards</h1>
+    {% else%}
+    <h1 class="statsH"> Utility Players</h1>
+    {% endif %}
+</div>
+<div class="pstatsContainer">
+    <table id="allPstats" class="table table-sortable table-hover">
+        <thead >
+            <tr class="bg-primary text-light">
+                <th>rk</th>
+                <th>_</th>
+                <th>Player</th>  
+                <th>Pos</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th>MP</th>
+                <th>FG</th>
+                <th>FGA</th>
+                <th>3P</th>
+                <th>3PA</th>
+                <th>FT</th>
+                <th>FTA</th>
+                <th>TRB</th>
+                <th>AST</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>TOV</th>
+                <th>PTS</th>
+                <th>FLP</th>
+                <th>S/FL</th>
+                <th>rk</th>
+                <th>_</th>
+                <th>Player</th>
+        </thead>
+        <tbody>
+            {%for player in players%}
+             {% if player not in team.players%}   
+            
+                <tr class="{{player.plid}}">
+                    <td>{{loop.index}}</td>
+                    <td><img class="stat-img" src="https://www.basketball-reference.com/req/202101181/images/players/{{player.plid}}.jpg"  alt=""></td>                  
+                    <td class="{{player.plid}}"><form action="/{{team.id}}/{{player.id}}/{{po}}" method="POST" id="form{{loop.index}}" ><p style="display: none">{{player.plid}}</p><button type="submit" form="form{{loop.index}}">{{player.player}}</button></form></td>
+                    <td>{{player.pos}}</td>
+                    <td>{{player.age}}</td>
+                    <td>{{player.team}}</td>
+                    <td>{{player.mp}}</td>
+                    <td>{{player.fg}}</td>
+                    <td>{{player.fga}}</td>
+                    <td>{{player.threep}}</td>
+                    <td>{{player.threepa}}</td>
+                    <td>{{player.ft}}</td>
+                    <td>{{player.fta}}</td>
+                    <td>{{player.trb}}</td>
+                    <td>{{player.ast}}</td>
+                    <td>{{player.stl}}</td>
+                    <td>{{player.blk}}</td>
+                    <td>{{player.tov}}</td>
+                    <td>{{player.pts}}</td>
+                    <td>{{player.flp}}</td>
+                    <td class="cost">{{player.cost}}</td>
+                    <td>{{loop.index}}</td>
+                    <td><img class="stat-img" src="https://www.basketball-reference.com/req/202101181/images/players/{{player.plid}}.jpg"  alt=""></td>
+                    <td class="{{player.plid}}"><form action="/{{team.id}}/{{player.id}}/{{po}}" method="POST" id="form{{loop.index}}" ><p style="display: none">{{player.plid}}</p><button type="submit" form="form{{loop.index}}">{{player.player}}</button></form></td>
+                </tr>
+            </form>
+            {%endif%}
+            {%endfor%}
+            
+        </tbody>
+    </table>
+</div>   
+<script src="/static/playerSelect.js"></script>
+{% endblock%}

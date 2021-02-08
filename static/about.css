@@ -1,0 +1,13 @@
+.bsktbll{
+    color: rgba(253, 167, 7, 0.801);
+}
+.navbar{
+    height: 75px;
+}
+body{
+    background:#f0e8d5;
+    margin-top: 80px;
+    margin-left: 0px;
+    background-position: calc(100%) calc(100% + 1500px);
+    
+}

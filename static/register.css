@@ -1,0 +1,12 @@
+body{
+    margin-top: 80px;
+    margin-left: 0px;
+    background-image: url(https://images.unsplash.com/photo-1518063319789-7217e6706b04?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8YmFza2V0YmFsbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+    background-size: 100vw;
+    background-position: calc(100%) calc(100% + 1500px);
+    z-index: -1;
+}
+.register-label{
+    text-emphasis: outline;
+    text-emphasis-color: black;
+}

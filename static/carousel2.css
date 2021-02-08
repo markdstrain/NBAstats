@@ -1,0 +1,103 @@
+html{
+  background-color: #f0e8d5;
+}
+.item{
+    opacity:0.4;
+    transition:.4s ease all;
+    margin:0 20px;
+    transform:scale(.8);
+    z-index: -1;
+  }
+  .single{
+    position: absolute;
+    display: block;
+    top: 400px;
+    width: 800px;
+    height: 533px;
+  }
+  .item > a img{
+      margin-left: 270px;
+      margin-top: 60px;
+      z-index: -1;
+  }
+  .item > a table{
+      margin-left: 150px;
+  }
+  @media(max-width:0px){
+    .item{margin:0; transform:scale(.9)}
+  }
+  .active .item{
+    opacity:1;
+    transform:scale(1);
+  }
+  .btn-success{
+    margin-left: 175px;
+    z-index: 2;
+  } 
+  .player-info{
+    position: absolute;
+    z-index: 20;
+    margin-left: 175px;
+    margin-top: 10px;
+    overflow: visible;
+  }
+  h3.pos{
+      position: absolute;
+      margin-left: 230px;
+      margin-top: -45px;
+      z-index:10 !important;
+  }
+  thead th{
+    background-color: rgb(12, 190, 202);
+  }
+  table tbody{
+    background-color: white;
+  }
+  tfoot td{
+  background-color: rgb(12, 190, 202);
+  }
+  body{
+    padding:0;
+    margin:135px 0 0 0;
+    font-family: Merriweather;
+    background:#f0e8d5;
+  }
+  .owl-stage-outer{
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+    
+  }
+  .owl-item {
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translateZ(0) scale(1.0, 1.0);
+      overflow: visible;
+  }
+  .owl-item > img{
+    z-index: -1;
+  }
+  .rbtn{
+    position: relative;
+    margin-bottom: 110px;
+  }
+  .inner{position:absolute; bottom:210px; left:0; right:0; text-align:center;}
+  .inner a{color:#fff; text-decoration:none; border-bottom:2px solid rgba(255,255,255,0.5); transition:.3s ease border-color}
+  .inner a:hover{border-color:#fff;}
+  .black .inner a{color:#000; border-color:rgba(0,0,0,0.4)}
+  .black .inner a:hover{border-color:#000;}
+  
+  .owl-controls{
+    position:absolute; 
+    top:0px;
+    margin-top: 600px;
+    left:50%;
+    margin-left: -10px;
+    justify-content: space-between;
+    text-align: center;
+    
+
+    }
+
+  .bsktbll{
+      color: rgba(253, 167, 7, 0.801);
+  }

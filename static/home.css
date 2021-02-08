@@ -1,0 +1,15 @@
+.bsktbll{
+    color: rgba(253, 167, 7, 0.801);
+}
+.navbar{
+    height: 75px;
+}
+body{
+    background:#f0e8d5;
+    margin-top: 80px;
+    margin-left: 0px;
+    background-image: url(https://images.unsplash.com/photo-1536578524251-eff3c73e9207?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzJ8fGJhc2tldGJhbGwlMjBwbGF5ZXJ8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60;);
+    background-size: 100vw;
+    background-position: calc(100%) calc(100% + 1500px);
+    
+}

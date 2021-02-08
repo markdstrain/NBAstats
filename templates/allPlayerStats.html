@@ -1,0 +1,99 @@
+{%extends 'home.html' %}
+{%block link%}
+    <link rel="stylesheet" href="/static/tablesort.css">
+{%endblock%}
+{%block title%} 
+   <title>Document</title>
+{%endblock%}
+
+{%block content%}
+<div class="h-container">
+    <h1 class="statsH">NBA Player Stats </h1>
+</div>
+<div class="pstatsContainer">
+    <table id="allPstats" class="table table-sortable table-hover">
+        <thead >
+            <tr class="bg-primary text-light">
+                <th>rk</th>
+                <th>_</th>
+                <th>Player</th>  
+                <th>Pos</th>
+                <th>Age</th>
+                <th>Team</th>
+                <th>G</th>
+                <th>GS</th>
+                <th>MP</th>
+                <th>FG</th>
+                <th>FGA</th>
+                <th>FG%</th>
+                <th>3P</th>
+                <th>3PA</th>
+                <th>3P%</th>
+                <th>2P</th>
+                <th>2PA</th>
+                <th>2P%</th>
+                <th>eFG</th>
+                <th>FT</th>
+                <th>FTA</th>
+                <th>FT%</th>
+                <th>ORB</th>
+                <th>DRB</th>
+                <th>TRB</th>
+                <th>AST</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>TOV</th>
+                <th>PF</th>
+                <th>PTS</th>
+                <th>FLP</th>
+                <th>S/FL</th>
+                <th>rk</th>
+                <th>_</th>
+                <th>Player</th>
+        </thead>
+        <tbody>
+            {%for player in pstats%}
+            <tr class="{{player.plid}}">
+                <td>{{loop.index}}</td>
+                <td><img class="stat-img" src="https://www.basketball-reference.com/req/202101181/images/players/{{player.plid}}.jpg"  alt=""></td>                 
+                <td class="{{player.plid}}"><div style="display: none">{{player.plid}}</div><a href="/{{player.plid}}/stat/page">{{player.player}}</a></td>
+                <td>{{player.pos}}</td>
+                <td>{{player.age}}</td>
+                <td>{{player.team}}</td>
+                <td>{{player.g}}</td>
+                <td>{{player.gs}}</td>
+                <td>{{player.mp}}</td>
+                <td>{{player.fg}}</td>
+                <td>{{player.fga}}</td>
+                <td>{{player.fgp}}</td>
+                <td>{{player.threep}}</td>
+                <td>{{player.threepa}}</td>
+                <td>{{player.threepper}}</td>
+                <td>{{player.two}}</td>
+                <td>{{player.twoa}}</td>
+                <td>{{player.twoper}}</td>
+                <td>{{player.efg}}</td>
+                <td>{{player.ft}}</td>
+                <td>{{player.fta}}</td>
+                <td>{{player.ftper}}</td>
+                <td>{{player.orb}}</td>
+                <td>{{player.drb}}</td>
+                <td>{{player.trb}}</td>
+                <td>{{player.ast}}</td>
+                <td>{{player.stl}}</td>
+                <td>{{player.blk}}</td>
+                <td>{{player.tov}}</td>
+                <td>{{player.pf}}</td>
+                <td>{{player.pts}}</td>
+                <td>{{player.flp}}</td>
+                <td>{{player.cost}}</td>
+                <td>{{loop.index}}</td>
+                <td><img class="stat-img" src="https://www.basketball-reference.com/req/202101181/images/players/{{player.plid}}.jpg"  alt=""></td>
+                <td class="{{player.plid}}"><div style="display: none">{{player.plid}}</div><a href="/{{player.plid}}/stat/page">{{player.player}}</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>   
+<script src="/static/index.js"></script>
+{%endblock%}

@@ -4,7 +4,7 @@
 <div>
     <div class="card-container">
         <div class="card" style="width: 11rem;">
-            <img class="card-img-top" src="https://www.basketball-reference.com/req/202101181/images/players/{{player_bio}}.jpg" alt="">
+            <img class="card-img-top" src="https://www.basketball-reference.com/req/202101181/images/players/{{player.plid}}.jpg" alt="">
         </div>
         <div >
                 <h3 class="name display-4 text-center">{{player.player}}</h3>
@@ -17,13 +17,7 @@
         <table class="table table-sortable table-hover">
            <thead>
                 <tr class="bg-primary text-light">
-                    <th>rk</th>
-                    <th>G</th>
-                    <th>Date</th>  
                     <th>Team</th>
-                    <th></th>
-                    <th>OPP</th>
-                    <th>W/L</th>
                     <th>GS</th>
                     <th>MP</th>
                     <th>FG</th>
@@ -32,6 +26,9 @@
                     <th>3P</th>
                     <th>3PA</th>
                     <th>3P%</th>
+                    <th>2P</th>
+                    <th>2PA</th>
+                    <th>2P%</th>
                     <th>FT</th>
                     <th>FTA</th>
                     <th>FT%</th>
@@ -44,35 +41,39 @@
                     <th>TOV</th>
                     <th>PF</th>
                     <th>PTS</th>
-                    <th>GmSc</th>
-                    <th>+/-</th>
-                    <th>FLP</th>
+                    <th>Sal/FP</th>
                 </tr>
            </thead>
-
            <tbody>
-               {%for td in logs%}
                <tr> 
-                   <td>{{loop.index}}</td>
-
-                   <div>               
-                       {%for stat in td[1:]%}
-                            {%if stat == td[3]%}
-                            {%else%}
-                                {%if stat == ''%}
-                                    <td>0</td>
-                                {%else%}
-                                    <td class="{{stat}}">{{stat}}</td>
-                                {%endif%}
-                            {%endif%}
-                       {%endfor%}
-                       <td>{{FLP[loop.index0]}}</td>
-                   </div>
+                    <td>{{player.team}}</td>
+                    <td>{{player.gs}}</td>
+                    <td>{{player.mp}}</td>
+                    <td>{{player.fg}}</td>
+                    <td>{{player.fga}}</td>
+                    <td>{{player.fgp}}</td>
+                    <td>{{player.threep}}</td>
+                    <td>{{player.threepa}}</td>
+                    <td>{{player.threepper}}</td>
+                    <td>{{player.two}}</td>
+                    <td>{{player.twoa}}</td>
+                    <td>{{player.twoper}}</td>
+                    <td>{{player.ft}}</td>
+                    <td>{{player.fta}}</td>
+                    <td>{{player.ftper}}</td>
+                    <td>{{player.orb}}</td>
+                    <td>{{player.drb}}</td>
+                    <td>{{player.trb}}</td>
+                    <td>{{player.ast}}</td>
+                    <td>{{player.stl}}</td>
+                    <td>{{player.blk}}</td>
+                    <td>{{player.tov}}</td>
+                    <td>{{player.pf}}</td>
+                    <td>{{player.pts}}</td>
+                    <td>${{player.cost}}</td>            
                </tr>
-               {%endfor%}
            </tbody>
         </table>
     </div>
-    <script src="/static/player.js"></script>
 </div>
 {%endblock%}

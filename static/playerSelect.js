@@ -15,28 +15,22 @@ function sortTableByColumn(table, column, asc = true){
     //sort each row
     
     const sortedRows = rows.sort((a,b) => {
-        if(column==1|column==2|column==3|column==5|column==35){
+        if(column==2|column==3|column==5|column==23){
             const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
             const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
             return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
-        }else if(column==11|column==14|column==17|column==18|column==20){
-            const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            return parseFloat(aColText) > parseFloat(bColText) ? (-1 * dirModifier) : (1 * dirModifier);
-        }else if(column==32){
-            const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            return parseFloat(aColText) > parseFloat(bColText) ? (1 * dirModifier) : (-1 * dirModifier);
-        }else if(column==4){
-            const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
-            return parseInt(aColText) > parseInt(bColText) ? (1 * dirModifier) : (-1 * dirModifier);
-            r
-        }else{
+        }else if(column==6|column==7|column==8|column==9|column==10|column==11|column==12|column==13|column==14|column==15|column==16|column==17|column==18|column==19){
             const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
             const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
             return parseInt(aColText) > parseInt(bColText) ? (-1 * dirModifier) : (1 * dirModifier);
-            
+        }else if(column==4|column==20){
+            const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
+            const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
+            return parseInt(aColText) > parseInt(bColText) ? (1 * dirModifier) : (-1 * dirModifier);
+        }else if(column==3){
+            const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
+            const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();;
+            return aColText > bColText ? (-1 * dirModifier) : (1 * dirModifier);
         }
     });
    
@@ -55,10 +49,9 @@ function sortTableByColumn(table, column, asc = true){
         $('table tbody tr td:first-child').html(function(i){
             return i+1 ;
         })
-        $('table tbody tr td:nth-child(34)').html(function(i){
+        $('table tbody tr td:nth-child(22)').html(function(i){
             return i+1;
         })
-        // 
         //     console.log(i[0]+1);
         
     }
@@ -75,9 +68,3 @@ document.querySelectorAll(".table-sortable th").forEach(headerCell => {
         sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
     });
 });
-
-
-
-
-
-

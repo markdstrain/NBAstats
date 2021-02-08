@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/aseets/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/carousel2.css">
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/owl.carousel.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather">
+    <title>team page</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top justify-content-between"> 
+        <a class="navbar-brand-lg" href="/"><i class="bsktbll fas fa-basketball-ball"></i></a>
+        <div class="btn btn-lg container">  
+            <a class="nav-link pl-3 text-light float-left" href="/all_players_stats">Player Stats</a>
+            
+            <h1 class="text-light text-center ml-5"><a class="text-light" href="/{{team.id}}/edit">{{team.name}}</a></h1>
+            
+            <ul class="nav navbar-nav flex-row float-right">
+                {% if session['username']%}
+                    <li class="nav-item dropdown">
+                        {% if g.user %}
+                            <a class="nav-link pr-3 pt-3 dropdown-toggle text-light" href="#" id="navbarDropdown" aria-haspopup="true" data-toggle="dropdown">{{g.user.username}}</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/users/{{g.user.username}}">{{g.user.username}}</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/create_team">Create a New Team</a>
+                            </div>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link pr-3 pt-3 text-light" href="/logout">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item pt-3">
+                        <a class="nav-link pr-3 text-light" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item pt-3">
+                        <a class="nav-link text-light" href="/register">Sign up</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="owl-carousel" style="overflow: visible;">
+    <div class="item">
+        <a href="#">
+            <table class="table" style="max-width: 500px;">
+                <thead>
+                    {% if team.players|length==0%}
+                    <tr>
+                        <th class="text-center text-dark">
+                        Swipe Right or Left to Begin Adding Players
+                        </th>
+                   </tr>
+                   {%else%} 
+                    <tr class="text-dark">
+                        <th>Pos</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>FLP</th>
+                    </tr> 
+                </thead>
+                 {%endif%}
+                <tbody>
+                    {%for player in team.players%}
+                    <tr class="text-dark">
+                        <td>{%if player.assignments[0].position == 'u1' or player.assignments[0].position=='u2' or player.assignments[0].position=='u3'%}Utility{%else%}{{player.assignments[0].position}}{%endif%}</td>
+                        <td><a href="/{{g.user.username}}/{{team.id}}/{{player.plid}}/{{player.id}}">{{player.player}}</a></td>
+                        <td class="cost">{{player.sal}}</td>
+                        <td class="">{{player.flp}}</td>
+                    </tr>
+                    {%endfor%}
+                {% if team.players|length==0%}
+                {% else%}
+                <tfoot>
+                    <tr class="text-dark">
+                        <td><b>Total:</b></td>
+                        <td></td>
+                        <td><b>{{team.totalsal}}</b></td>
+                        <td><b>{{team.totalFlp}}</b></td>
+                    </tr>
+                </tfoot>
+                {%endif%}
+                   
+                </tbody>
+            </table>
+        </a> 
+    </div>
+
+    
+    <div class="item black">
+        {%if point%}
+        <div class="pos">
+            <h3 class="pos display-3">PG</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{point.player.plid}}.jpg" style="max-width: 250px; " alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;"  href="/{{g.user.username}}/{{team.id}}/{{point.player.plid}}/{{point.player.id}}">{{point.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{point.player.sal}} &emsp; <b> Fantasy Points</b> {{point.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{point.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">PG</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/PG" class="btn btn-success btn-sm btn-center">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item">
+        {%if shoot%}
+        <div class="pos">
+            <h3 class="pos display-3">SG</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{shoot.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;"  href="/{{g.user.username}}/{{team.id}}/{{shoot.player.plid}}/{{shoot.player.id}}">{{shoot.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{shoot.player.sal}} &emsp; <b> Fantasy Points</b> {{shoot.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{shoot.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">SG</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/SG" class="btn btn-success btn-sm btn">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item black">
+        {%if small%}
+        <div class="pos">
+            <h3 class="pos display-3">SF</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{small.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{small.player.plid}}/{{small.player.id}}">{{small.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{small.player.sal}} &emsp; <b> Fantasy Points</b> {{small.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{small.player.id}}/delete" >Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">SF</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/SF" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item">
+        {%if power%}
+        <div class="pos">
+            <h3 class="pos display-3">PF</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{power.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{power.player.plid}}/{{power.player.id}}">{{power.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{power.player.sal}} &emsp; <b> Fantasy Points</b> {{power.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{power.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">PF</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/PF" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item black">
+        {%if center%}
+        <div class="pos">
+            <h3 class="pos display-3">C</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{center.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{center.player.plid}}/{{center.player.id}}">{{center.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{center.player.sal}} &emsp; <b> Fantasy Points</b> {{center.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{center.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">C</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/C" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item">
+        {%if guard%}
+        <div class="pos">
+            <h3 class="pos display-3">G</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{guard.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{guard.player.plid}}/{{guard.player.id}}">{{guard.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{guard.player.sal}} &emsp; <b> Fantasy Points</b> {{guard.player.flp}}</h4>
+            </div>
+            <form>  
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{guard.player.id}}/delete">Remove</button>
+            </form> 
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">G</a>
+            </div>
+            <form>
+            <button button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/G" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item black">
+        {%if forward%}
+        <div class="pos">
+            <h3 class="pos display-3">F</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{forward.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{forward.player.plid}}/{{forward.player.id}}">{{forward.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{forward.player.sal}} &emsp; <b> Fantasy Points</b> {{forward.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{forward.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">F</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/F" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item">
+        {%if u1%}
+        <div class="pos">
+            <h3 class="pos display-3">U</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{u1.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{u1.player.plid}}/{{u1.player.id}}">{{u1.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{u1.player.sal}} &emsp; <b> Fantasy Points</b> {{u1.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{u1.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">Utility</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/u1" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item black">
+        {%if u2%}
+        <div class="pos">
+            <h3 class="pos display-3">U</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{u2.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{u2.player.plid}}/{{u2.player.id}}">{{u2.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{u2.player.sal}} &emsp; <b> Fantasy Points</b> {{u2.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{u2.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">Utility</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/u2" class="btn btn-success btn-sm">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+    <div class="item">
+        {%if u3%}
+        <div class="pos">
+            <h3 class="pos display-3">U</h3>
+        </div>
+        <a href="#">
+            <img src="https://www.basketball-reference.com/req/202101181/images/players/{{u3.player.plid}}.jpg" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-4 text-light" style="-webkit-text-stroke: 2px #000000;" href="/{{g.user.username}}/{{team.id}}/{{u3.player.plid}}/{{u3.player.id}}">{{u3.player.player}}</a>
+            </div>
+            <div class="owl-stage-outer">
+                <h4><b> Salary:</b> ${{u3.player.sal}} &emsp; <b> Fantasy Points</b> {{u3.player.flp}}</h4>
+            </div>
+            <form>
+            <button class="rbtn btn btn-sm btn-danger" formmethod="POST" formaction="/{{team.id}}/{{u3.player.id}}/delete">Remove</button>
+            </form>
+        </a>
+        {%else%}
+        <a href="#">
+            <img src="/static/images/playerPic.png" style="max-width: 250px;" alt="" />
+            <div class="inner">
+                <a class="display-3 text-light" style="-webkit-text-stroke: 3px #000000;" href="#">Utility</a>
+            </div>
+            <form>
+            <button formmethod="GET" formaction="/{{g.user.username}}/{{team.id}}/u3" class="btn btn-success btn-sm ">Add Player</button>
+            </form>
+        </a>
+        {%endif%}
+   </div>
+
+</div> 
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/owl.carousel.min.js"></script>
+   <script src="/static/carousel.js"></script>
+   <script src="https://kit.fontawesome.com/167f7ea656.js" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
+
+</body>
+</html>

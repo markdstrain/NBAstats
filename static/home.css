@@ -13,3 +13,7 @@ body{
     background-position: calc(100%) calc(100% + 1500px);
     
 }
+.photo{;
+    position: absolute;
+    bottom: 2px;
+}

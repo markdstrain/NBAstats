@@ -7,7 +7,7 @@ users can enter into a fantasy league competition
 Demo: https://basketball-tracker.herokuapp.com/
 
 # Images
-
+## HomePage
 ![Image of Home]( ./static/images/Home.png)
 ![Image of Login]( ./static/images/Login.png)
 ![Image of Register]( ./static/images/Register.png)

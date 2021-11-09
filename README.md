@@ -9,7 +9,7 @@ Demo: https://basketball-tracker.herokuapp.com/
 
 # Requirements
 
-async-generator==1.10. 
+async-generator==1.10. <br/>
 attrs==20.3.0. 
 backcall==0.2.0. 
 bcrypt==3.2.0. 

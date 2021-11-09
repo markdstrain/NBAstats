@@ -9,6 +9,10 @@ Demo: https://basketball-tracker.herokuapp.com/
 # Images
 
 ![Image of Home]( ./static/images/Home.png)
+![Image of Login]( ./static/images/Login.png)
+![Image of Register]( ./static/images/Register.png)
+![Image of Stats]( ./static/images/Stats.png)
+![Image of Players]( ./static/images/Players.png)
 # Requirements
 
 async-generator==1.10. <br/>

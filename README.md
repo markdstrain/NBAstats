@@ -13,8 +13,8 @@ async-generator==1.10. <br/>
 attrs==20.3.0.  <br/>
 bcrypt==3.2.0.  <br/>
 beautifulsoup4==4.9.3. <br/>      
-Flask==1.1.2.  <br/>
-Flask-Bcrypt==0.7.1.  <br/>
+Flask==1.1.2. <br/>
+Flask-Bcrypt==0.7.1. <br/>
 Flask-DebugToolbar==0.11.0.  <br/>
 Flask-SQLAlchemy==2.4.4  <br/>  
 Flask-WTF==0.14.3.  <br/>

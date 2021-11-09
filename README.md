@@ -9,9 +9,13 @@ Demo: https://basketball-tracker.herokuapp.com/
 # Images
 ## HomePage
 ![Image of Home]( ./static/images/Home.png)
+## Login Capabilities
 ![Image of Login]( ./static/images/Login.png)
+## Register Capabilities
 ![Image of Register]( ./static/images/Register.png)
+## Check Player Stats
 ![Image of Stats]( ./static/images/Stats.png)
+## Follow Specific Players
 ![Image of Players]( ./static/images/Players.png)
 # Requirements
 

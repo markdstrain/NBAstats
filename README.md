@@ -6,6 +6,10 @@ users can enter into a fantasy league competition
 
 Demo: https://basketball-tracker.herokuapp.com/
 
+# SQL Schema
+![Image of Schema]( ./static/images/NBASchema.png)
+
+
 # Images
 ## HomePage
 ![Image of Home]( ./static/images/Home.png)

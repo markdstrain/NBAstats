@@ -8,7 +8,7 @@ Demo: https://basketball-tracker.herokuapp.com/
 
 # Images
 
-![Image of Home]( ./static)
+![Image of Home]( ./static/images/Home.png)
 # Requirements
 
 async-generator==1.10. <br/>

@@ -4,7 +4,7 @@ import pandas as pd
 import requests, re
 
 
-current_season = 2021
+current_season = 2022
 league_min = '$449,115'
 class Statistics():
 

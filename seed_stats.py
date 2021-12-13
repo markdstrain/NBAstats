@@ -3,7 +3,7 @@ from app import app
 from stats import Statistics
 #Create all tables I want to put this on a daily timer
 
-current_season = 2021
+current_season = 2022
 stats = Statistics()
 
 db.drop_all()

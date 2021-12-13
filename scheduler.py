@@ -5,7 +5,7 @@ import schedule
 import time
 #Create all tables I want to put this on a daily timer
 
-current_season = 2021
+current_season = 2022
 stats = Statistics()
 
 player_stats = stats.populating_player_stats()
